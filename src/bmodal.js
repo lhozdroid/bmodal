@@ -8,43 +8,43 @@ export default class BModal {
 
     #actionConfig = {
         /* Definition */
-        title: "",
-        color: ACTION_COLOR.dark,
-        icon: "",
+        "title": "",
+        "color": ACTION_COLOR.dark,
+        "icon": "",
 
         /* Actions */
-        onClick: (modal) => {
+        "onClick": (modal) => {
             modal.close();
         }
     };
 
     #config = {
         /* Definition */
-        size: MODAL_SIZE.default,
-        color: MODAL_COLOR.dark,
-        title: "",
-        content: "",
+        "size": MODAL_SIZE.default,
+        "color": MODAL_COLOR.dark,
+        "title": "",
+        "content": "",
 
         /* Behavior */
-        closeButton: true,
-        closeClick: false,
-        closeEscape: false,
+        "closeButton": true,
+        "closeClick": false,
+        "closeEscape": false,
 
-        displayHeader: true,
-        displayContent: true,
-        displayFooter: true,
+        "displayHeader": true,
+        "displayContent": true,
+        "displayFooter": true,
 
         /* Actions */
-        actions: [],
+        "actions": [],
 
         /* Events */
-        onOpening: (modal) => {
+        "onOpening": (modal) => {
         },
-        onOpened: (modal) => {
+        "onOpened": (modal) => {
         },
-        onClosing: (modal) => {
+        "onClosing": (modal) => {
         },
-        onClosed: (modal) => {
+        "onClosed": (modal) => {
         }
     };
 
@@ -67,12 +67,181 @@ export default class BModal {
         this.#element = this.#renderModal(header, content, footer);
         document.body.append(this.#element);
         this.#modal = new bootstrap.Modal(this.#element.querySelector(".modal"), {
-            backdrop: this.#config.closeClick ? true : "static",
-            keyboard: this.#config.closeEscape
+            "backdrop": this.#config.closeClick ? true : "static",
+            "keyboard": this.#config.closeEscape
         });
         this.#modal.show();
 
         this.#config.onOpened(this);
+    }
+
+    /**
+     *
+     * @param content
+     * @param title
+     * @param color
+     * @param actions
+     * @returns {BModal}
+     */
+    static confirm(content, title = "Confirm", color = MODAL_COLOR.warning, actions = [
+        {
+            "title": "No",
+            "color": ACTION_COLOR.danger,
+            "icon": "fa-solid fa-xmark fa-fw",
+            "onClick": (modal) => modal.close()
+        },
+        {
+            "title": "Yes",
+            "color": ACTION_COLOR.success,
+            "icon": "fa-solid fa-check fa-fw",
+            "onClick": (modal) => modal.close()
+        }]) {
+        return new BModal({
+            "title": title,
+            "content": content,
+            "color": color,
+            "actions": actions
+        });
+    }
+
+    /**
+     *
+     * @param content
+     * @param title
+     * @returns {BModal}
+     */
+    static danger(content, title = "Important") {
+        return new BModal({
+            "title": title,
+            "content": content,
+            "color": MODAL_COLOR.danger,
+            "actions": [
+                {
+                    "title": "Close",
+                    "color": ACTION_COLOR.danger,
+                    "icon": "fa-solid fa-xmark fa-fw",
+                    "onClick": (modal) => modal.close()
+                }
+            ]
+        });
+    }
+
+    static dark(content, title = "Important") {
+        return new BModal({
+            "title": title,
+            "content": content,
+            "color": MODAL_COLOR.dark,
+            "actions": [
+                {
+                    "title": "Close",
+                    "color": ACTION_COLOR.dark,
+                    "icon": "fa-solid fa-xmark fa-fw",
+                    "onClick": (modal) => modal.close()
+                }
+            ]
+        });
+    }
+
+    static info(content, title = "Important") {
+        return new BModal({
+            "title": title,
+            "content": content,
+            "color": MODAL_COLOR.info,
+            "actions": [
+                {
+                    "title": "Close",
+                    "color": ACTION_COLOR.info,
+                    "icon": "fa-solid fa-xmark fa-fw",
+                    "onClick": (modal) => modal.close()
+                }
+            ]
+        });
+    }
+
+    static light(content, title = "Important") {
+        return new BModal({
+            "title": title,
+            "content": content,
+            "color": MODAL_COLOR.light,
+            "actions": [
+                {
+                    "title": "Close",
+                    "color": ACTION_COLOR.light,
+                    "icon": "fa-solid fa-xmark fa-fw",
+                    "onClick": (modal) => modal.close()
+                }
+            ]
+        });
+    }
+
+    static primary(content, title = "Important") {
+        return new BModal({
+            "title": title,
+            "content": content,
+            "color": MODAL_COLOR.primary,
+            "actions": [
+                {
+                    "title": "Close",
+                    "color": ACTION_COLOR.primary,
+                    "icon": "fa-solid fa-xmark fa-fw",
+                    "onClick": (modal) => modal.close()
+                }
+            ]
+        });
+    }
+
+    static secondary(content, title = "Important") {
+        return new BModal({
+            "title": title,
+            "content": content,
+            "color": MODAL_COLOR.secondary,
+            "actions": [
+                {
+                    "title": "Close",
+                    "color": ACTION_COLOR.secondary,
+                    "icon": "fa-solid fa-xmark fa-fw",
+                    "onClick": (modal) => modal.close()
+                }
+            ]
+        });
+    }
+
+    static success(content, title = "Important") {
+        return new BModal({
+            "title": title,
+            "content": content,
+            "color": MODAL_COLOR.success,
+            "actions": [
+                {
+                    "title": "Close",
+                    "color": ACTION_COLOR.success,
+                    "icon": "fa-solid fa-xmark fa-fw",
+                    "onClick": (modal) => modal.close()
+                }
+            ]
+        });
+    }
+
+    /**
+     *
+     * @param content
+     * @param title
+     * @returns {BModal}
+     */
+    static warning(content, title = "Important") {
+        return new BModal({
+            "title": title,
+            "content": content,
+            "color": MODAL_COLOR.warning,
+            "actions": [
+                {
+                    "title": "Close",
+                    "color": ACTION_COLOR.warning,
+                    "icon": "fa-solid fa-xmark fa-fw",
+                    "onClick": (modal) => modal.close()
+                }
+            ]
+        });
     }
 
     /**
@@ -250,7 +419,7 @@ export const MODAL_COLOR = {
     "danger": "text-bg-danger",
     "light": "text-bg-light",
     "dark": "text-bg-dark"
-}
+};
 
 export const ACTION_COLOR = {
     "primary": "btn-primary",
