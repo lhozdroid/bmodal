@@ -6,18 +6,6 @@ import Util from "./util.js";
 export default class BModal {
     #domParser = new DOMParser();
 
-    #actionConfig = {
-        /* Definition */
-        "title": "",
-        "color": ACTION_COLOR.dark,
-        "icon": "",
-
-        /* Actions */
-        "onClick": (modal) => {
-            modal.close();
-        }
-    };
-
     #config = {
         /* Definition */
         "size": MODAL_SIZE.default,
@@ -272,7 +260,7 @@ export default class BModal {
         if (this.#config.displayFooter) {
             let actions = [];
             for (let i = 0; i < this.#config.actions.length; i++) {
-                const action = Util.deepExtend(this.#actionConfig, this.#config.actions[i]);
+                const action = Util.deepExtend(MODAL_ACTION, this.#config.actions[i]);
 
                 // language=HTML
                 const icon = action.icon != null && action.icon.trim() !== "" ? `
@@ -402,6 +390,13 @@ export default class BModal {
         this.#config.onClosed(this);
     }
 }
+
+export const MODAL_ACTION = {
+    "title": "",
+    "color": ACTION_COLOR.dark,
+    "icon": "",
+    "onClick": (modal) => modal.close()
+};
 
 export const MODAL_SIZE = {
     "default": "",
