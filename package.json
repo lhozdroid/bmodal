@@ -11,5 +11,8 @@
     "modal"
   ],
   "author": "Luis Salas",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@rollup/plugin-terser": "^0.4.4"
+  }
 }

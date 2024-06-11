@@ -1,4 +1,8 @@
 import Util from "./util.js";
+import MODAL_SIZE from "./bmodal-size.js";
+import MODAL_COLOR from "./bmodal-color.js";
+import MODAL_ACTION_COLOR from "./bmodal-action-color.js";
+import MODAL_ACTION from "./bmodal-action.js";
 
 /**
  *
@@ -74,13 +78,13 @@ export default class BModal {
     static confirm(content, title = "Confirm", color = MODAL_COLOR.warning, actions = [
         {
             "title": "No",
-            "color": ACTION_COLOR.danger,
+            "color": MODAL_ACTION_COLOR.danger,
             "icon": "fa-solid fa-xmark fa-fw",
             "onClick": (modal) => modal.close()
         },
         {
             "title": "Yes",
-            "color": ACTION_COLOR.success,
+            "color": MODAL_ACTION_COLOR.success,
             "icon": "fa-solid fa-check fa-fw",
             "onClick": (modal) => modal.close()
         }]) {
@@ -106,7 +110,7 @@ export default class BModal {
             "actions": [
                 {
                     "title": "Close",
-                    "color": ACTION_COLOR.danger,
+                    "color": MODAL_ACTION_COLOR.danger,
                     "icon": "fa-solid fa-xmark fa-fw",
                     "onClick": (modal) => modal.close()
                 }
@@ -122,7 +126,7 @@ export default class BModal {
             "actions": [
                 {
                     "title": "Close",
-                    "color": ACTION_COLOR.dark,
+                    "color": MODAL_ACTION_COLOR.dark,
                     "icon": "fa-solid fa-xmark fa-fw",
                     "onClick": (modal) => modal.close()
                 }
@@ -138,7 +142,7 @@ export default class BModal {
             "actions": [
                 {
                     "title": "Close",
-                    "color": ACTION_COLOR.info,
+                    "color": MODAL_ACTION_COLOR.info,
                     "icon": "fa-solid fa-xmark fa-fw",
                     "onClick": (modal) => modal.close()
                 }
@@ -154,7 +158,7 @@ export default class BModal {
             "actions": [
                 {
                     "title": "Close",
-                    "color": ACTION_COLOR.light,
+                    "color": MODAL_ACTION_COLOR.light,
                     "icon": "fa-solid fa-xmark fa-fw",
                     "onClick": (modal) => modal.close()
                 }
@@ -170,7 +174,7 @@ export default class BModal {
             "actions": [
                 {
                     "title": "Close",
-                    "color": ACTION_COLOR.primary,
+                    "color": MODAL_ACTION_COLOR.primary,
                     "icon": "fa-solid fa-xmark fa-fw",
                     "onClick": (modal) => modal.close()
                 }
@@ -186,7 +190,7 @@ export default class BModal {
             "actions": [
                 {
                     "title": "Close",
-                    "color": ACTION_COLOR.secondary,
+                    "color": MODAL_ACTION_COLOR.secondary,
                     "icon": "fa-solid fa-xmark fa-fw",
                     "onClick": (modal) => modal.close()
                 }
@@ -202,7 +206,7 @@ export default class BModal {
             "actions": [
                 {
                     "title": "Close",
-                    "color": ACTION_COLOR.success,
+                    "color": MODAL_ACTION_COLOR.success,
                     "icon": "fa-solid fa-xmark fa-fw",
                     "onClick": (modal) => modal.close()
                 }
@@ -224,7 +228,7 @@ export default class BModal {
             "actions": [
                 {
                     "title": "Close",
-                    "color": ACTION_COLOR.warning,
+                    "color": MODAL_ACTION_COLOR.warning,
                     "icon": "fa-solid fa-xmark fa-fw",
                     "onClick": (modal) => modal.close()
                 }
@@ -389,40 +393,20 @@ export default class BModal {
 
         this.#config.onClosed(this);
     }
+
+    /**
+     *
+     * @returns {null}
+     */
+    getElement() {
+        return this.#element;
+    }
+
+    /**
+     *
+     * @returns {null}
+     */
+    getModal() {
+        return this.#modal;
+    }
 }
-
-export const MODAL_ACTION = {
-    "title": "",
-    "color": ACTION_COLOR.dark,
-    "icon": "",
-    "onClick": (modal) => modal.close()
-};
-
-export const MODAL_SIZE = {
-    "default": "",
-    "small": "modal-sm",
-    "large": "modal-lg",
-    "xlarge": "modal-xl",
-};
-
-export const MODAL_COLOR = {
-    "primary": "text-bg-primary",
-    "secondary": "text-bg-secondary",
-    "success": "text-bg-success",
-    "info": "text-bg-info",
-    "warning": "text-bg-warning",
-    "danger": "text-bg-danger",
-    "light": "text-bg-light",
-    "dark": "text-bg-dark"
-};
-
-export const ACTION_COLOR = {
-    "primary": "btn-primary",
-    "secondary": "btn-secondary",
-    "success": "btn-success",
-    "info": "btn-info",
-    "warning": "btn-warning",
-    "danger": "btn-danger",
-    "light": "btn-light",
-    "dark": "btn-dark"
-};

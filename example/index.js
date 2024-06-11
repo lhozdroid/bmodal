@@ -1,3 +1,3 @@
-import BModal from "../src/bmodal.js";
+import BLoading from "../dist/bloading.es.js";
 
-BModal.danger("This is a modal!");
+BLoading.show();
