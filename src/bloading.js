@@ -1,6 +1,6 @@
 import BModal from "./bmodal.js";
 import LOADING_ICON from "./bloading-icon.js";
-import {LOADING_SUBTITLE} from "./bloading-subtitle.js";
+import LOADING_SUBTITLE from "./bloading-subtitle.js";
 
 /**
  *

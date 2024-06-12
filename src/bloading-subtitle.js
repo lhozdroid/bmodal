@@ -1,4 +1,4 @@
-export const LOADING_SUBTITLE = [
+const LOADING_SUBTITLE = [
     "Please wait while we load the content for you.",
     "Loading, thank you for your patience.",
     "We're processing your request, this won't take long.",
@@ -40,3 +40,5 @@ export const LOADING_SUBTITLE = [
     "Your content is being prepared, thank you for waiting.",
     "We appreciate your patience, loading."
 ];
+
+export default LOADING_SUBTITLE;
