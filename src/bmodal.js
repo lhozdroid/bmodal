@@ -262,7 +262,7 @@ export default class BModal {
         let footer = null;
 
         if (this.#config.displayFooter) {
-            let actions = [];
+            const buttons = [];
             for (let i = 0; i < this.#config.actions.length; i++) {
                 const action = Util.deepExtend(MODAL_ACTION, this.#config.actions[i]);
 
@@ -272,26 +272,29 @@ export default class BModal {
                 ` : "";
 
                 // language=HTML
-                const element = this.#domParser.parseFromString(`
+                const button = this.#domParser.parseFromString(`
                     <button type="button" class="btn ${action.color}">
                         ${icon}
                         ${action.title}
                     </button>
                 `, "text/html").body.firstChild;
 
-                element.addEventListener("click", () => action.onClick(this));
-                actions.push(element);
+                const onClick = action.onClick;
+                button.addEventListener("click", () => onClick(this));
+
+                buttons.push(button);
             }
 
-            if (actions.length > 0) {
+            if (buttons.length > 0) {
                 // language=HTML
                 footer = this.#domParser.parseFromString(`
                     <div class="modal-footer"></div>
                 `, "text/html").body.firstChild;
 
-                for (let i = 0; i < actions.length; i++) {
-                    const action = actions[i];
-                    footer.append(action);
+                for (let i = 0; i < buttons.length; i++) {
+
+                    const button = buttons[i];
+                    footer.append(button);
                 }
             }
         }
