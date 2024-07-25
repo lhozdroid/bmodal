@@ -1,3 +1,5 @@
+import terser from "@rollup/plugin-terser";
+
 export default [
     {
         input: "src/bmodal.bundle.js",
@@ -6,7 +8,8 @@ export default [
                 file: "dist/bmodal.min.js",
                 format: "es"
             }
-        ]
+        ],
+        plugins: [terser()]
     },
     {
         input: "src/bloading.bundle.js",
@@ -15,6 +18,7 @@ export default [
                 file: "dist/bloading.min.js",
                 format: "es"
             }
-        ]
+        ],
+        plugins: [terser()]
     }
 ];

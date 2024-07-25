@@ -6,29 +6,22 @@ export default class Util {
      * @returns {{}|*}
      */
     static deepExtend(base, ...extensions) {
-        base = base || {};
-        extensions = extensions || [];
+        if (!base) return {};
 
-        for(let extensionIndex = 0; extensionIndex < extensions.length; extensionIndex++) {
-            const extension = extensions[extensionIndex];
-            const keys = Object.keys(extension);
+        for (const obj of extensions) {
+            if (!obj) continue;
 
-            for(let keyIndex = 0; keyIndex < keys.length; keyIndex++) {
-                const key = keys[keyIndex];
-                if(base.hasOwnProperty(key)) {
-                    const baseValue = base[key];
-                    const extensionValue = extension[key];
-
-                    const isBaseValueJson = {}.constructor == baseValue.constructor;
-                    const isExtensionValueJson = {}.constructor == extensionValue.constructor;
-
-                    if(isBaseValueJson && isExtensionValueJson) {
-                        base[key] = Util.deepExtend(baseValue, extensionValue);
-                    } else {
-                        base[key] = extensionValue;
-                    }
-                } else {
-                    base[key] = extension[key];
+            for (const [key, value] of Object.entries(obj)) {
+                switch (Object.prototype.toString.call(value)) {
+                    case "[object Object]":
+                        base[key] = base[key] || {};
+                        base[key] = Util.deepExtend(base[key], value);
+                        break;
+                    case "[object Array]":
+                        base[key] = Util.deepExtend(new Array(value.length), value);
+                        break;
+                    default:
+                        base[key] = value;
                 }
             }
         }

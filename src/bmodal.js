@@ -118,6 +118,12 @@ export default class BModal {
         });
     }
 
+    /**
+     *
+     * @param content
+     * @param title
+     * @returns {BModal}
+     */
     static dark(content, title = "Important") {
         return new BModal({
             "title": title,
@@ -134,6 +140,12 @@ export default class BModal {
         });
     }
 
+    /**
+     *
+     * @param content
+     * @param title
+     * @returns {BModal}
+     */
     static info(content, title = "Important") {
         return new BModal({
             "title": title,
@@ -243,12 +255,21 @@ export default class BModal {
     #renderContent() {
         let body = null;
         if (this.#config.displayContent) {
-            // language=HTML
-            body = this.#domParser.parseFromString(`
-                <div class="modal-body">
-                    ${this.#config.content}
-                </div>
-            `, "text/html").body.firstChild;
+            if (this.#config.content instanceof HTMLElement) {
+                // language=HTML
+                body = this.#domParser.parseFromString(`
+                    <div class="modal-body"></div>
+                `, "text/html").body.firstChild;
+
+                body.append(this.#config.content);
+            } else {
+                // language=HTML
+                body = this.#domParser.parseFromString(`
+                    <div class="modal-body">
+                        ${this.#config.content}
+                    </div>
+                `, "text/html").body.firstChild;
+            }
         }
 
         return body;
@@ -403,6 +424,14 @@ export default class BModal {
      */
     getElement() {
         return this.#element;
+    }
+
+    /**
+     *
+     * @returns {null}
+     */
+    getModal() {
+        return this.#modal;
     }
 
     /**
