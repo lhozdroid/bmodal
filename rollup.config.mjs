@@ -20,5 +20,23 @@ export default [
             }
         ],
         plugins: [terser()]
+    },
+    {
+        input: "src/bmodal.bundle.js",
+        output: [
+            {
+                file: "dist/bmodal.js",
+                format: "es"
+            }
+        ]
+    },
+    {
+        input: "src/bloading.bundle.js",
+        output: [
+            {
+                file: "dist/bloading.js",
+                format: "es"
+            }
+        ]
     }
 ];
