@@ -1,11 +1,11 @@
 import BModal from "../src/bmodal.js";
-import BLoading from "../dist/bloading.min.js";
+import BLoading from "../src/bloading.js";
 import MODAL_ACTION_COLOR from "../src/bmodal-action-color.js";
 import MODAL_COLOR from "../src/bmodal-color.js";
 
-const loading = BLoading.show();
+const screen = BLoading.screen();
 setTimeout(() => {
-    loading.close();
+    screen.close();
     BModal.confirm("Do you want to continue seeing the loading?", "Confirm", MODAL_COLOR.info, [
         {
             "title": "No",
@@ -22,5 +22,7 @@ setTimeout(() => {
             "onClick": (modal) => {
                 console.log("Yes");
             }
-        }])
+        }]);
 }, 1000);
+
+const element = BLoading.element(document.querySelector("#example"));

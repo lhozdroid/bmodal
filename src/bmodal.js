@@ -14,8 +14,8 @@ export default class BModal {
         /* Definition */
         "size": MODAL_SIZE.default,
         "color": MODAL_COLOR.dark,
-        "title": "",
-        "content": "",
+        "title": "&nbsp",
+        "content": "&nbsp",
 
         /* Behavior */
         "closeButton": true,
