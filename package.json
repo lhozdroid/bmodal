@@ -14,5 +14,16 @@
   "license": "MIT",
   "dependencies": {
     "@rollup/plugin-terser": "^0.4.4"
-  }
+  },
+  "directories": {
+    "example": "example"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lhozdroid/bmodal.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lhozdroid/bmodal/issues"
+  },
+  "homepage": "https://github.com/lhozdroid/bmodal#readme"
 }

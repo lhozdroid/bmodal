@@ -44,10 +44,19 @@ export default class BLoading extends BModal {
     static #getHTML(title, icon, subtitle) {
         // language=HTML
         return `
+            <style>
+                .loading-content {
+                    min-width: 500px;
+                }
+                .img-loading {
+                    width: 60px;
+                    height: 60px;
+                }
+            </style>
             <div class="loading-content">
                 <div class="row">
                     <div class="col-sm-2">
-                        <img class="img-fluid" src="${icon}">
+                        <img class="img-loading" src="${icon}">
                     </div>
                     <div class="col-sm">
                         <div class="row">

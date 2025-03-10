@@ -23,6 +23,6 @@ setTimeout(() => {
                 console.log("Yes");
             }
         }]);
-}, 1000);
+}, 10000);
 
 const element = BLoading.element(document.querySelector("#example"));
