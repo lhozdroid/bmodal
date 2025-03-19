@@ -9,6 +9,8 @@ import MODAL_ACTION from "./bmodal-action.js";
  *
  */
 export default class BModal {
+    static #tracker = new BModalTracker();
+
     #domParser = new DOMParser();
 
     #config = {
@@ -70,8 +72,7 @@ export default class BModal {
         this.#modal.show();
 
         this.#config.onOpened(this);
-
-        BModalTracker.trackOpen(this);
+        BModal.#tracker.trackOpen(this);
     }
 
     /**
@@ -436,8 +437,7 @@ export default class BModal {
         }
 
         this.#config.onClosed(this);
-
-        BModalTracker.trackClose(this);
+        BModal.#tracker.trackClose(this);
     }
 
     /**

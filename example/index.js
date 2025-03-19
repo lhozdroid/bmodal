@@ -1,28 +1,53 @@
 import BModal from "../src/bmodal.js";
 import BLoading from "../src/bloading.js";
-import MODAL_ACTION_COLOR from "../src/bmodal-action-color.js";
-import MODAL_COLOR from "../src/bmodal-color.js";
 
-const screen = BLoading.screen();
-setTimeout(() => {
-    screen.close();
-    BModal.confirm("Do you want to continue seeing the loading?", "Confirm", MODAL_COLOR.info, [
-        {
-            "title": "No",
-            "color": MODAL_ACTION_COLOR.danger,
-            "icon": "fa-solid fa-xmark fa-fw",
-            "onClick": (modal) => {
-                console.log("No");
-            }
-        },
-        {
-            "title": "Yes",
-            "color": MODAL_ACTION_COLOR.success,
-            "icon": "fa-solid fa-check fa-fw",
-            "onClick": (modal) => {
-                console.log("Yes");
-            }
-        }]);
-}, 10000);
+/**
+ *
+ */
+var showStacked = () => {
+    const actions = [ //
+        () => {
+            const modal = BModal.info("Information");
+            setTimeout(() => modal.close(), 3000);
+        }, //
+        () => {
+            const modal = BModal.danger("Danger");
+            setTimeout(() => modal.close(), 3000);
+        }, //
+        () => {
+            const modal = BModal.warning("Warning");
+            setTimeout(() => modal.close(), 3000);
+        } //
+    ];
 
-const element = BLoading.element(document.querySelector("#example"));
+    for (let i = 0; i < actions.length; i++) {
+        setTimeout(() => actions[i](), 500 * i);
+    }
+}
+
+/**
+ *
+ */
+var showStackedLoading = () => {
+    const actions = [ //
+        () => {
+            const modal = BModal.info("Information");
+            setTimeout(() => modal.close(), 3000);
+        }, //
+        () => {
+            const modal = BModal.danger("Danger");
+            setTimeout(() => modal.close(), 3000);
+        }, //
+        () => {
+            const loading = BLoading.screen("Loading...");
+            setTimeout(() => loading.close(), 3000);
+        } //
+    ];
+
+    for (let i = 0; i < actions.length; i++) {
+        setTimeout(() => actions[i](), 500 * i);
+    }
+}
+
+document.querySelector("#stacked-modals").addEventListener("click", () => showStacked());
+document.querySelector("#stacked-modals-loading").addEventListener("click", () => showStackedLoading());

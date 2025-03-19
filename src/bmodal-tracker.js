@@ -1,11 +1,11 @@
 export default class BModalTracker {
-    static #modals = [];
+    #modals = [];
 
     /**
      *
      * @param modal
      */
-    static trackOpen(modal) {
+    trackOpen(modal) {
         this.#modals.push(modal);
         this.#updateZIndexes();
     }
@@ -14,7 +14,7 @@ export default class BModalTracker {
      *
      * @param modal
      */
-    static trackClose(modal) {
+    trackClose(modal) {
         this.#modals.splice(this.#modals.indexOf(modal), 1);
         this.#updateZIndexes();
     }
@@ -22,7 +22,7 @@ export default class BModalTracker {
     /**
      *
      */
-    static #updateZIndexes() {
+    #updateZIndexes() {
         let baseZIndex = 2050;
 
         const backdrops = document.querySelectorAll(".modal-backdrop");
@@ -33,16 +33,16 @@ export default class BModalTracker {
 
             const modalElement = modal.getElement();
             if (modalElement) {
-                modalElement.style.zIndex = modalZIndex;
+                modalElement.style.zIndex = modalZIndex + "";
 
                 const modalDialog = modalElement.querySelector(".modal");
                 if (modalDialog) {
-                    modalDialog.style.zIndex = modalZIndex;
+                    modalDialog.style.zIndex = modalZIndex + "";
                 }
             }
 
             if (backdrops[index]) {
-                backdrops[index].style.zIndex = backdropZIndex;
+                backdrops[index].style.zIndex = backdropZIndex + "";
             }
         });
     }

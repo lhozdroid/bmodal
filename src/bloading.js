@@ -44,29 +44,31 @@ export default class BLoading extends BModal {
     static #getHTML(title, icon, subtitle) {
         // language=HTML
         return `
-            <style>
-                .loading-content {
-                    min-width: 500px;
-                }
-                .img-loading {
-                    width: 60px;
-                    height: 60px;
-                }
-            </style>
-            <div class="loading-content">
-                <div class="row">
-                    <div class="col-sm-2">
-                        <img class="img-loading" src="${icon}">
-                    </div>
-                    <div class="col-sm">
-                        <div class="row">
-                            <div class="col-sm">
-                                <h3 class="m-0">${title}</h3>
-                            </div>
+            <div>
+                <style>
+                    .loading-content {
+                        min-width: 500px;
+                    }
+                    .img-loading {
+                        width: 60px;
+                        height: 60px;
+                    }
+                </style>
+                <div class="loading-content">
+                    <div class="row">
+                        <div class="col-sm-2">
+                            <img class="img-loading" src="${icon}">
                         </div>
-                        <div class="row">
-                            <div class="col-sm">
-                                <span class="fw-light">${subtitle}</span>
+                        <div class="col-sm">
+                            <div class="row">
+                                <div class="col-sm">
+                                    <h3 class="m-0">${title}</h3>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-sm">
+                                    <span class="fw-light">${subtitle}</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -131,10 +133,8 @@ export default class BLoading extends BModal {
 
         // Ensures proper positioning
         this.#backdrop.style.position = "absolute";
-        this.#backdrop.style.zIndex = "1000";
 
         modal.style.position = "absolute";
-        modal.style.zIndex = "1001";
 
         // Sets the initial position
         this.#updatePosition(target, modal, dialog);
